@@ -164,11 +164,14 @@ class Game {
 
 }
 
+class Player {
+  constructor(color) {
+    this.color = color;
+  }
+}
+
 const startButton = document.getElementById("startButton");
-startButton.addEventListener("click", ()=> {
-  console.log("event listenter functioning");
-  new Game(6, 7)
+startButton.addEventListener("click", () => {
+  new Game(6, 7);
 });
-
-
 
