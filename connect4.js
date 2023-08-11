@@ -7,7 +7,7 @@
 class Game {
 
   constructor(height = 6, width = 7) {
-
+    this.gameOver = false;
     this.height = height;
     this.width = width;
     this.board = []; // array of rows, each row is array of cells  (board[y][x])
@@ -88,6 +88,7 @@ class Game {
   /** endGame: announce game end */
 
   endGame(msg) {
+    this.gameOver = true;
     console.log('endgame this', this);
     alert(msg);
   }
@@ -95,6 +96,10 @@ class Game {
   /** handleClick: handle click of column top to play piece */
 
   handleClick(evt) {
+    if (this.gameOver) {
+      return;
+    }
+
     // get x from ID of clicked cell
     const x = Number(evt.target.id);
 
@@ -159,4 +164,11 @@ class Game {
 
 }
 
-new Game(6, 7);
+const startButton = document.getElementById("startButton");
+startButton.addEventListener("click", ()=> {
+  console.log("event listenter functioning");
+  new Game(6, 7)
+});
+
+
+
